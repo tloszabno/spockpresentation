@@ -10,14 +10,14 @@ import static org.assertj.core.api.BDDAssertions.then
  * @author tlos
  *
  */
-class XmlTest {
+class XmlTestGroovy {
 
 
     @Test
-    void "should easily generate xml"(){
+    void "see how easy is to write xmls in groovy!"(){
         def firstname = "Admin"
         def lastname = "Master"
-        String xml  = """
+        String expectedXmlFromGui  = """
         <people>
             <person>
                 <name>
@@ -27,7 +27,7 @@ class XmlTest {
         </people>
         """
 
-        then(xml).isEqualTo('''
+        then(expectedXmlFromGui).isEqualTo('''
         <people>
             <person>
                 <name>
