@@ -33,7 +33,7 @@ public final class MainPage {
 
     @Override
     public String toString() {
-        return "MainPage{" + "hasLeftMenu=" + hasMenu()+ ", rightContentTitle=" + rightContent.getTitle() + '}';
+        return "MainPage{" + "hasLeftMenu=" + hasMenu()+ ", rightContent=" + (rightContent != null ? rightContent.getTitle() : "null") + '}';
     }
 
     public static class Builder {
