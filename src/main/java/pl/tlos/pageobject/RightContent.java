@@ -42,4 +42,8 @@ public class RightContent {
         return this;
     }
 
+    @Override
+    public String toString() {
+        return "RightContent{" + "elements=" + elements + ", title='" + title + '\'' + ", error='" + error + '\'' + '}';
+    }
 }

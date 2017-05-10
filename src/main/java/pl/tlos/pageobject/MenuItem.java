@@ -12,4 +12,9 @@ public class MenuItem {
         this.title = title;
         this.url = url;
     }
+
+    @Override
+    public String toString() {
+        return "MenuItem{" + "title='" + title + '\'' + '}';
+    }
 }

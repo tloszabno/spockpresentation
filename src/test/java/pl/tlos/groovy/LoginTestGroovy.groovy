@@ -18,13 +18,22 @@ class LoginTestGroovy {
 
     @Before
     void init() {
-        browser = new Browser();
+        browser = new Browser()
     }
 
     @Test
     void shouldShowLoginScreen() {
+        def elementsOnPage = browser.currentPage.rightContent.elements*.getTitle()
+        assert "login" in elementsOnPage
+        assert "password" in elementsOnPage
+    }
+
+    @Test
+    void shouldShowLoginScreen_BDD() {
         then(browser.currentPage.rightContent.elements*.getTitle()).contains("login", "password")
     }
+
+
     @Test
     void shouldFindLoginWebElement() {
         def element = browser.currentPage.rightContent.elements*.find( {el -> el.title == "login"} )
@@ -33,9 +42,18 @@ class LoginTestGroovy {
     }
 
     @Test
-    @Ignore
     void shouldShowLoginScreenTitle_nullHandling() {
-        then(browser.getCurrentPageNull()?.rightContent?.title).isEqualTo("Login page")
+        assert "Login page" == browser.getCurrentPageNull()?.rightContent?.title
+    }
+
+
+
+    def "login screen should be visible on start"(){
+        WebElement element = browser.currentPage.rightContent.elements*.find( {el -> el.title == "login"} )
+
+        then(element.text).isEqualTo("Login")
+        //vs
+        then element.text isEqualTo "Login"
     }
 
 

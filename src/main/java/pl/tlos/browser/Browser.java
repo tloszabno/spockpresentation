@@ -60,4 +60,8 @@ public class Browser {
         currentPage = createPageWithSomeUserList();
     }
 
+    @Override
+    public String toString() {
+        return "Browser{name=Chrome " + "userLogged=" + logged + '}';
+    }
 }

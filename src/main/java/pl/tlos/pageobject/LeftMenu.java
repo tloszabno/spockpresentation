@@ -12,7 +12,17 @@ public class LeftMenu {
     private String title;
 
     private LeftMenu(Builder builder) {
+        this.items = builder.items;
+        this.title = builder.title;
+    }
 
+    public List<MenuItem> getItems() {
+        return items;
+    }
+
+    @Override
+    public String toString() {
+        return "LeftMenu{" + "items=" + items + ", title='" + title + '\'' + '}';
     }
 
     public static Builder builder() {

@@ -42,7 +42,7 @@ public class LoginTest {
     }
 
     @Test
-    public void shouldShowLoginScreen_v2() {
+    public void shouldShowLoginScreen_BDD() {
         // when
         List<WebElement> elementsInContent = browser.getCurrentPage()
                 .getRightContent()
@@ -54,10 +54,9 @@ public class LoginTest {
     }
 
     @Test
-    @Ignore
     public void shouldShowLoginScreenTitle_nullHandling() {
         // when
-        String title = browser.getCurrentPageNull()
+        String title = browser.getCurrentPageNull() // NULL
                 .getRightContent()
                 .getTitle();
 
@@ -66,7 +65,7 @@ public class LoginTest {
     }
 
     @Test
-    public void shouldShowLoginScreenTitle_nullHandling_v1() {
+    public void shouldShowLoginScreenTitle_nullHandling_v2() {
         // when
         String title = null;
         MainPage currentPage = browser.getCurrentPageNull();
@@ -82,7 +81,7 @@ public class LoginTest {
     }
 
     @Test
-    public void shouldShowLoginScreenTitle_nullHandling_v2_j8() {
+    public void shouldShowLoginScreenTitle_nullHandling_jdk8() {
         String title = ofNullable(browser.getCurrentPageNull())//
                 .map(mainPage -> mainPage.getRightContent())
                 .map(content -> content.getTitle())
@@ -91,3 +90,4 @@ public class LoginTest {
     }
 
 }
+

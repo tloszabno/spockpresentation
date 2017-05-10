@@ -27,6 +27,15 @@ public final class MainPage {
         return rightContent;
     }
 
+    public boolean hasMenu() {
+        return leftMenu != null;
+    }
+
+    @Override
+    public String toString() {
+        return "MainPage{" + "hasLeftMenu=" + hasMenu()+ ", rightContentTitle=" + rightContent.getTitle() + '}';
+    }
+
     public static class Builder {
         private LeftMenu leftMenu;
 
