@@ -56,12 +56,32 @@ public class PageGenerator {
         return new WebElement("password");
     }
 
+    private static WebElement passwordRepeatElement() {
+        return new WebElement("passwordRepeat");
+    }
+
     public static MainPage createLoginErrorPage() {
         return MainPage.builder()
                 .withoutMenu()
                 .withRightContent(//
                         ofElements(loginElement(), passwordElement()).titled("Login Page")
                                 .withError("Login or password is wrong"))
+                .buildDummy();
+    }
+
+    public static MainPage createRegistrationPage() {
+        return MainPage.builder()
+                .withoutMenu()
+                .withRightContent(//
+                        ofElements(loginElement(), passwordElement(), passwordRepeatElement()).titled("Registration Page"))
+                .buildDummy();
+    }
+
+    public static MainPage createRegistrationPageWithError(String error) {
+        return MainPage.builder()
+                .withoutMenu()
+                .withRightContent(//
+                        ofElements(loginElement(), passwordElement(), passwordRepeatElement()).titled("Registration Page").withError(error))
                 .buildDummy();
     }
 }

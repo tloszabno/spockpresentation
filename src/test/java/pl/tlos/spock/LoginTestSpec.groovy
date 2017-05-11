@@ -32,10 +32,12 @@ class LoginTestSpec extends Specification {
         def currentPage = browser.getCurrentPage()
 
         then:
-        "User" in currentPage.leftMenu.items*.title
+        "Users" in currentPage.leftMenu.items*.title
     }
 
-    def "logged user"(){
+
+
+    private void "logged user"() {
         def login = "admin"
         def password = "1234"
         loginBox.enterText login

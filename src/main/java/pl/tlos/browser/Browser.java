@@ -1,11 +1,9 @@
 package pl.tlos.browser;
 
-import static pl.tlos.pl.tlos.generator.PageGenerator.createEmptyPageAfterLogin;
-import static pl.tlos.pl.tlos.generator.PageGenerator.createLoginPage;
-import static pl.tlos.pl.tlos.generator.PageGenerator.createPageWithSomeUserList;
-import static pl.tlos.pl.tlos.generator.PageGenerator.createLoginErrorPage;
-
 import pl.tlos.pageobject.MainPage;
+import pl.tlos.pl.tlos.generator.PageGenerator;
+
+import static pl.tlos.pl.tlos.generator.PageGenerator.*;
 
 /**
  * Emulate some dummy browser behaviour
@@ -33,10 +31,11 @@ public class Browser {
         if(!logged && "Login Page".equals(currentPage.getRightContent().getTitle())){
             tryToLogin();
         }
-        else{
-            //if necessary add error that user is not logged
+        else if( "Registration Page".equals(currentPage.getRightContent().getTitle())){
+            tryToRegister();
         }
     }
+
 
     private void tryToLogin() {
         String login = currentPage.getRightContent()
@@ -56,8 +55,41 @@ public class Browser {
         }
     }
 
+
+    private void tryToRegister() {
+        String login = currentPage.getRightContent()
+                .getElements()
+                .get(0)
+                .getText();
+        String password = currentPage.getRightContent()
+                .getElements()
+                .get(1)
+                .getText();
+        String repeatedPassword = currentPage.getRightContent()
+                .getElements()
+                .get(2)
+                .getText();
+
+        if( login.length() < 4){
+            currentPage = PageGenerator.createRegistrationPageWithError("Login is to short");
+            return;
+        }
+        if( !password.equals(repeatedPassword)){
+            currentPage = PageGenerator.createRegistrationPageWithError("Passwords do not match");
+            return;
+        }
+        if( password.length() < 10){
+            currentPage = PageGenerator.createRegistrationPageWithError("Password is too weak");
+            return;
+        }
+    }
+
     public void clickOnUsers(){
         currentPage = createPageWithSomeUserList();
+    }
+
+    public void goToRegistration(){
+        currentPage = createRegistrationPage();
     }
 
     @Override

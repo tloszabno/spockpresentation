@@ -53,6 +53,7 @@ public class LoginTest {
                 .containsExactly("login", "password");
     }
 
+    @Ignore
     @Test
     public void shouldShowLoginScreenTitle_nullHandling() {
         // when
@@ -64,6 +65,7 @@ public class LoginTest {
         then(title).isEqualTo("Login Page");
     }
 
+    @Ignore
     @Test
     public void shouldShowLoginScreenTitle_nullHandling_v2() {
         // when
@@ -80,6 +82,7 @@ public class LoginTest {
         then(title).isEqualTo("Login Page");
     }
 
+    @Ignore
     @Test
     public void shouldShowLoginScreenTitle_nullHandling_jdk8() {
         String title = ofNullable(browser.getCurrentPageNull())//
