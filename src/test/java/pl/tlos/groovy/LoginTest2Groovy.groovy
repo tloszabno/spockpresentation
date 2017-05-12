@@ -5,6 +5,7 @@ import org.junit.Ignore
 import org.junit.Test
 import pl.tlos.browser.Browser
 import pl.tlos.pageobject.WebElement
+import spock.lang.Narrative
 
 import static org.assertj.core.api.BDDAssertions.then
 
@@ -12,7 +13,7 @@ import static org.assertj.core.api.BDDAssertions.then
  * @author tlos
  *
  */
-class LoginTestGroovy {
+class LoginTest2Groovy {
 
     Browser browser
 

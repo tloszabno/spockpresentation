@@ -17,6 +17,7 @@ import pl.tlos.pageobject.WebElement;
 /**
  * @author tlos
  */
+
 public class LoginTest {
 
     Browser browser;

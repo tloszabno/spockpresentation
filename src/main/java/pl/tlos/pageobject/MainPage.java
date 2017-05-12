@@ -1,7 +1,5 @@
 package pl.tlos.pageobject;
 
-import java.awt.Menu;
-
 /**
  * @author tlos
  */

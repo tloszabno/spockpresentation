@@ -1,32 +1,27 @@
 package pl.tlos.spock
 
 import pl.tlos.browser.Browser
-import spock.lang.Narrative
-import spock.lang.Specification
-import spock.lang.Subject
-import spock.lang.Title
-import spock.lang.Unroll
+import spock.lang.*
 
 @Title("Registration Page Specification")
 @Narrative('''As a guest I want to register to Application''')
-class RegistrationSpec extends Specification {
+class Registration3Spec extends Specification {
 
     @Subject
     Browser browser = new Browser()
 
-    @Unroll
-    def "Should show error '#expected_message' for user: '#login', password: '#password' and repeated password: '#repeated_password'"() {
-        given:
+    def "Should show error message when wrong registration data entered"() {
+        given: "Registration page"
         "Registration page"()
 
-        when:
+        when: "Guest enters login, password  and repeated password"
         "Login input"() enterText login
         "Password input"() enterText password
         "RepeatedPassword input"() enterText repeated_password
-        and:
+        and: "Submits page"
         browser.clickSubmit()
 
-        then:
+        then: "proper error message is shown"
         browser.currentPage.rightContent.error == expected_message
 
         where:
